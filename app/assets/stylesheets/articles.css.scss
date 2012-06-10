@@ -12,3 +12,18 @@
     margin-bottom: 10px;
   }
 }
+div.masthead{
+	border-bottom: 1px solid #302207;
+  height: 180px;
+}
+.masthead-content{
+  img{
+    float:right;
+  }
+  h2{
+    clear:both;
+    float:right;
+    margin: 0;
+    margin-right: 30px;
+  }	
+}
