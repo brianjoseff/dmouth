@@ -1,11 +1,21 @@
 /home page of the website where viewers can see the most recent 4-5 articles, a few choice quotes, the names of the editors/people of import, and other little tidbits
 /publicly viewable
 
-%h2 Specialties of the Day
-%table
-  =render @articles
-
-%h2 Niblets
-=render @quotes
-%h2 Local Favorites
-=render @articles
+%div.col1
+  %div.col-cont
+    %div.frontpage
+      %span.front-container  
+        %h2 Specialties of the Day
+    =render @articles
+%div.col2
+  %div.frontpage
+    %div.frontpage
+      %span.front-container
+        %h2 Niblets
+    =render @quotes
+%div.col3  
+  %div.frontpage
+    %div.frontpage
+      %span.front-container
+        %h2 Local Favorites
+    =render @articles

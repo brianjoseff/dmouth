@@ -1,4 +1,6 @@
 /quote view module, rendered by call to quotes array
-
-%p "#{quote.quote}"
-%p -#{quote.source}
+%div.quote
+  %div.tidbit
+    "#{quote.quote}"
+  %div.source
+    %p -#{quote.source}
