@@ -1,0 +1,30 @@
+/admin protected page
+
+= form_for(@article) do |f|
+  - if @article.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@article.errors.count, "error")
+        prohibited this article from being saved:
+      %ul
+        - @article.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :title
+    %br/
+    = f.text_field :title
+  .field
+    = f.label :author
+    %br/
+    = f.text_field :author
+  .field
+    = f.label :blurb
+    %br/
+    = f.text_area :blurb
+  .field
+    = f.label :content
+    %br/
+    = f.text_area :content
+  .actions
+    = f.submit
+    
