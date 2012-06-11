@@ -12,7 +12,11 @@
  *= require_tree .
 */
 
-body { background-color: #f5f1e5; color: #302207; }
+body{ 
+	background-color: #f5f1e5;
+	color: #302207;
+	height: 100%;
+}
 html{
 	background-color: #f5f1e5;
 }
@@ -20,9 +24,10 @@ html{
 p,a{
 	background-color: #f5f1e5;
 }
-.container{
+#container{
 	width:970px;
 	margin: 0 auto;
+	height: 100%;
 }
 header{
 	border-bottom: 2px solid #4f3f1d;
@@ -50,6 +55,7 @@ h2{
 
 /*FRONT PAGE*/
 /*----------*/
+
 .col-cont{
 	padding-right:10px;
 	padding-left:10px;
@@ -73,5 +79,30 @@ h2{
 	float:left;
 	width:33%;
 }
-
-
+.frontcontainer{
+	overflow:auto;
+	display:block;
+	margin:0 auto;
+	width: 100%;
+	height: 100%;
+}
+footer{
+	border-top: 2px solid #4f3f1d;
+}
+footer p{
+	text-align:center;
+}
+footer img{
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+}
+div.link a{
+	display:block;
+	width:100px;
+	margin-left:auto;
+	margin-right:auto;
+}
+span.clear{
+	clear:both;
+}

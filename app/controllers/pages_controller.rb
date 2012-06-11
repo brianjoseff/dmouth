@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   skip_before_filter :require_login 
   def index
-    @articles = Article.all
+    @articles = Article.last(5)
     @quotes = Quote.all
   end
   
