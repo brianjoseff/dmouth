@@ -2,17 +2,16 @@
 /publicly viewable
 =render 'shared/mast'
 %p#notice= notice
+
+%h1= @article.title
 %p
-  %b Title:
-  = @article.title
+  =unless @article.assets.empty?
+    =image_tag(@article.assets.first.image.url(:article))
 %p
-  %b Author:
-  = @article.author
+  %b= @article.blurb
 %p
-  %b Blurb:
-  = @article.blurb
-%p
-  %b Content:
   = simple_format(@article.content)
+%p  
+  = @article.author
 = link_to 'Edit', edit_article_path(@article)
 = link_to 'Back', articles_path

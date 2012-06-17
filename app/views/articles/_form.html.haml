@@ -1,6 +1,5 @@
 /admin protected page
-
-= form_for(@article) do |f|
+= form_for(@article, :action => 'update', :html => { :multipart => true}) do |f|
   - if @article.errors.any?
     #error_explanation
       %h2
@@ -17,6 +16,36 @@
     = f.label :author
     %br/
     = f.text_field :author
+  .field
+    -@assets.each do |asset|
+      =f.fields_for :assets, asset do |asset_fields|
+        -if asset_fields.object.image_file_name.nil?
+          .field
+            =asset_fields.label "image"
+            =asset_fields.file_field :image
+        -else
+          .field
+            =image_tag(asset_fields.object.image.url(:article))
+            =asset_fields.label  "delete image"
+            =asset_fields.check_box :_destroy
+    / -@assets.each do |asset|
+    /   =image_tag(asset.image.url(:normal))
+    /   =f.check_box :_destroy       
+    / -if !asset_fields.object.nil? and  !asset_fields.object.new_record?
+    /   =image_tag(asset_fields.object.image.url(:normal))
+    /   =assets_fields.check_box :_destroy
+    / -@assets.each do |asset|
+    /       =f.fields_for "asset[]", asset do |ff|
+    /         =ff.check_box :_destroy
+    /         =image_tag(asset.image.url(:normal))
+    / -unless @assets.first.image_file_name.nil?
+    /   -@assets.each do |asset|
+    /     =f.fields_for :assets, asset do |fff|
+    /       =image_tag(asset.image.url(:normal))
+    /       =fff.label "delete image"
+    /       =fff.check_box :_destroy
+      
+    
   .field
     = f.label :blurb
     %br/

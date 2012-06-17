@@ -1,13 +1,14 @@
 Mouth::Application.routes.draw do
+  resources :assets
   resources :users
-
   resources :admins
-
   resources :articles
   resources :sessions, only: [:new, :create, :destroy]
+  
   match '/signout', :to => 'sessions#destroy'
   match '/signin', :to => 'sessions#new'
   match '/archives', :to => 'articles#index'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

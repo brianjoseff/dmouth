@@ -26,7 +26,7 @@ class ArticlesController < ApplicationController
   # GET /articles/new.json
   def new
     @article = Article.new
-
+    @article.assets.build
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @article }
@@ -36,6 +36,8 @@ class ArticlesController < ApplicationController
   # GET /articles/1/edit
   def edit
     @article = Article.find(params[:id])
+    @assets = @article.assets
+    @article.assets.build
   end
 
   # POST /articles
@@ -58,7 +60,8 @@ class ArticlesController < ApplicationController
   # PUT /articles/1.json
   def update
     @article = Article.find(params[:id])
-
+    #check_for_destroys
+    
     respond_to do |format|
       if @article.update_attributes(params[:article])
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
@@ -81,4 +84,5 @@ class ArticlesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
 end
