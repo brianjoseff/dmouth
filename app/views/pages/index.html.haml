@@ -12,12 +12,16 @@
         %span.front-container  
           %h2 Specialties of the Day
       =render @articles
+      -if current_user
+        =link_to "Add Article", new_article_path
   %div.col2
     %div.col-cont
       %div.frontpage
         %span.front-container
           %h2 Niblets
       =render @quotes
+      -if current_user
+        =link_to "Add Quote", new_quote_path
   %div.col3  
     %div.col-cont
       %div.frontpage

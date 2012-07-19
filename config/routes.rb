@@ -1,8 +1,11 @@
 Mouth::Application.routes.draw do
+  resources :ratings
+
   resources :assets
   resources :users
   resources :admins
   resources :articles
+  resources :quotes
   resources :sessions, only: [:new, :create, :destroy]
   
   match '/signout', :to => 'sessions#destroy'

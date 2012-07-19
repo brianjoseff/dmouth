@@ -3,15 +3,67 @@
 =render 'shared/mast'
 %p#notice= notice
 
-%h1= @article.title
-%p
-  =unless @article.assets.empty?
-    =image_tag(@article.assets.first.image.url(:article))
-%p
-  %b= @article.blurb
-%p
-  = simple_format(@article.content)
-%p  
-  = @article.author
-= link_to 'Edit', edit_article_path(@article)
-= link_to 'Back', articles_path
+.frontcontainer
+  .article-col1
+    %h1= @article.title
+    %p
+      -unless @article.assets.empty?
+        =image_tag(@article.assets.first.image.url(:article))
+    %p
+      %b= @article.blurb
+    %p
+      = simple_format(@article.content)
+    %p  
+      = @article.author
+    = link_to 'Edit', edit_article_path(@article)
+    = link_to 'Back', articles_path
+  .artcile-col2
+    %h3 Related Articles
+    /render links to related articles
+    /how will related articles be determined?
+  %span.clear
+
+-if current_user
+  %h4 Article views: #{@article.impression_count}
+  
+/ -@rating_categories.each do |x|
+/   =form_for (x)
+/     radio buttons name="star1" type="radio" class="star
+/     .
+/     .
+/     .
+/     .
+/     
+=form_for(@rating) do |f|
+  / %b= @rating.category.1.name
+  %div.star-rating-control
+    =f.label "Quality of Writing"
+    =f.radio_button :quality, "1", :class => "star", :name => "star1"
+    =f.radio_button :quality, "2", :class => "star", :name => "star1"
+    =f.radio_button :quality, "3", :class => "star", :name => "star1"
+    =f.radio_button :quality, "4", :class => "star", :name => "star1"
+    =f.radio_button :quality, "5", :class => "star", :name => "star1"
+  %div.star-rating-control
+    =f.label "Likelihood to read another article by author"
+    =f.radio_button :readagain, "1", :class => "star"
+    =f.radio_button :readagain, "2", :class => "star"
+    =f.radio_button :readagain, "3", :class => "star"
+    =f.radio_button :readagain, "4", :class => "star"
+    =f.radio_button :readagain, "5", :class => "star"
+  %div.star-rating-control
+    =f.label "Interest Appeal"
+    =f.radio_button :interest, "1", :class => "star"
+    =f.radio_button :interest, "2", :class => "star"
+    =f.radio_button :interest, "3", :class => "star"
+    =f.radio_button :interest, "4", :class => "star"
+    =f.radio_button :interest, "5", :class => "star"
+  .field
+    =f.label "One word this article brings to mind"
+    =f.text_field :qualitative
+  .actions
+    =f.submit "Submit your ratings"
+  
+
+
+
+

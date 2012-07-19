@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require jquery-star-rating
  *= require_tree .
 */
 
@@ -79,6 +80,9 @@ h2{
 	float:left;
 	width:33%;
 }
+
+/*overflow:auto and setting width and height clears the floats that are in this container.
+it's like a clear:both situation*/
 .frontcontainer{
 	overflow:auto;
 	display:block;
@@ -87,6 +91,8 @@ h2{
 	height: 100%;
 }
 footer{
+	margin-top: 15px;
+	padding-top: 15px;
 	border-top: 2px solid #4f3f1d;
 }
 footer p{

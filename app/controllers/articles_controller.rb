@@ -1,5 +1,10 @@
 class ArticlesController < ApplicationController
   before_filter :require_login, :except => [:index, :show]
+  
+  #impressionist gem logs page views
+  impressionist :actions => [:show]
+  
+  
   # GET /articles
   # GET /articles.json
   def index
@@ -15,7 +20,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     @article = Article.find(params[:id])
-
+    @rating = Rating.new
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @article }

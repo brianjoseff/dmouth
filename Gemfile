@@ -8,7 +8,7 @@ group :development, :test do
   gem 'sqlite3'
 end
 group :production do
-  gem 'pg', '0.12.2'
+  gem 'pg'
 end
 # Gems used only for assets and not required
 # in production environments by default.
@@ -30,6 +30,8 @@ gem 'clearance'
 gem 'paperclip'
 gem 'aws-s3'
 gem 'aws-sdk'
+gem 'impressionist'
+gem 'jquery-star-rating-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
