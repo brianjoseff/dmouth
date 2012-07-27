@@ -32,6 +32,7 @@ class ArticlesController < ApplicationController
   def new
     @article = Article.new
     @article.assets.build
+    @assets = @article.assets
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @article }
