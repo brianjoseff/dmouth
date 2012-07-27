@@ -14,7 +14,3 @@
 //= require jquery_ujs
 //= require jquery-star-rating
 //= require_tree .
-
-// $(document).ready(function(){
-// 	$
-// })
