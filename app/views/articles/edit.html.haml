@@ -4,3 +4,4 @@
 = render 'form'
 = link_to 'Show', @article
 = link_to 'Back', articles_path
+= link_to 'Destroy', @article, confirm: 'Are you sure?', method: :delete

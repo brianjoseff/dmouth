@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   
   def new
   end
+  
   def create
     @user = User.authenticate(params[:session][:username],
                              params[:session][:password])
@@ -14,9 +15,10 @@ class SessionsController < ApplicationController
     else
       #sign the user in and redirect to the user's show page.
       sign_in @user
-      redirect_to root_url
+      redirect_back_or root_path
     end
   end
+  
   def destroy
     sign_out
     redirect_to root_path

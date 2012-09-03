@@ -1,8 +1,9 @@
 /navigation page with links to add new articles, new quotes, and new chefs
 /should have link to edit credentials
 /possibly add analytics, so admins can view page activity and whatnot
-
-=link_to "Upload a New Article", new_articles_path
-=link_to "Bring a New Chef to the Kitchen", new_chefs_path
-=link_to "Add a Dash of Wisdom to the Mix", new_quote_path
+%h1 Admin Dashboard
+%ul
+  %li =link_to "Upload a New Article", new_articles_path
+  /%li =link_to "Bring a New Chef to the Kitchen", new_chefs_path
+  %li =link_to "Add a Dash of Wisdom to the Mix", new_quote_path
 

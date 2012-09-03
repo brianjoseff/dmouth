@@ -1,6 +1,6 @@
 /where users view the article
 /publicly viewable
-=render 'shared/mast'
+
 %p#notice= notice
 
 .frontcontainer
@@ -24,7 +24,7 @@
   %span.clear
 
 -if current_user
-  %h4 Article views: #{@article.impression_count}
+  %h4 Article views: #{@article.impressionist_count}
   
 / -@rating_categories.each do |x|
 /   =form_for (x)

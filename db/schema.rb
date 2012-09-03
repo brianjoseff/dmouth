@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120717012222) do
+ActiveRecord::Schema.define(:version => 20120902230356) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -25,8 +25,9 @@ ActiveRecord::Schema.define(:version => 20120717012222) do
     t.string   "author"
     t.text     "blurb"
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "counter_cache"
   end
 
   create_table "assets", :force => true do |t|

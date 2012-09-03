@@ -1,0 +1,26 @@
+.toolbar{
+	height: 40px;
+	z-index: 5;
+
+}
+nav{
+  ul{
+    background: #fff;
+  	margin-bottom:5px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  li{
+    display: inline-block;
+  	margin-top:3px;
+  	margin-left:3px;
+  	margin-right:3px;
+  	padding:2	px;
+  }
+  a{
+    text-decoration:none;
+  	font-weight:bold;
+  	display:block;
+  	padding: 5px;
+  }
+}

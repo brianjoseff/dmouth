@@ -1,10 +1,21 @@
 %header
-  /=link_to image_tag("dartmouth.png", :alt => "Dartmouth college"), dartmouth_path
-  =image_tag("dartmouth.png", :alt => "Dartmouth college")
-  =image_tag("mouth.png", :alt => "Mouth: To Promote Healthy/Intellectual Conflict")
-  =image_tag("open.png", :alt => "Open for Business 24/7")
-  /=link_to image_tag("open.png", :alt => "Open for Business 24/7"), contact_path
-  / %nav
-  /   %ul   
-  /     %li= link_to "about", about_path
-  /     %li= link_to "contact", contact_path
+  -if current_user
+    .toolbar
+      %nav
+        %ul
+          %li= link_to "Manage Articles", articles_path
+          /%li =link_to "Manage Authors- Bring a New Chef to the Kitchen", chefs_path
+          %li= link_to "Manage Quotes", quotes_path
+          %li= link_to "Sign out", signout_path
+          / Add a Dash of Wisdom to the Mix
+  -if current_page?(root_path)
+    /=link_to image_tag("dartmouth.png", :alt => "Dartmouth college"), dartmouth_path
+    =image_tag("dartmouth.png", :alt => "Dartmouth college")
+    =image_tag("mouth.png", :alt => "Mouth: To Promote Healthy/Intellectual Conflict")
+    =image_tag("open.png", :alt => "Open for Business 24/7")
+    /=link_to image_tag("open.png", :alt => "Open for Business 24/7"), contact_path
+  -else
+    .masthead
+      .masthead-content
+        =link_to image_tag('mouth2.png', :alt => "Mouth"), root_path
+        %h2= @title

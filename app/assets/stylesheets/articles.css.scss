@@ -36,3 +36,50 @@ div.masthead{
   float:left;
   width: 35%;
 }
+
+
+
+
+
+.archive{
+  td{
+    padding-right: 30px;
+  }
+}
+
+.article_list{
+  div.list_item{
+    float:none;
+    width: 540px;
+    margin-bottom: 20px;
+  }
+  a{
+    font-size: 1.15em;
+    display: inline-block;
+    text-decoration: underline;
+    font-weight: bold;
+    color: #26466D;
+  }
+  p{
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+}
+.author-date{
+  font-size: 80%;
+  color: #545454;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

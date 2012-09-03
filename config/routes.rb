@@ -3,7 +3,7 @@ Mouth::Application.routes.draw do
 
   resources :assets
   resources :users
-  resources :admins
+  #resources :admins
   resources :articles
   resources :quotes
   resources :sessions, only: [:new, :create, :destroy]
@@ -11,7 +11,9 @@ Mouth::Application.routes.draw do
   match '/signout', :to => 'sessions#destroy'
   match '/signin', :to => 'sessions#new'
   match '/archives', :to => 'articles#index'
+  match '/admin', :to => 'pages#admin'
   
+  root :to => 'pages#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -61,7 +63,7 @@ Mouth::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'pages#index'
+  
   
 
   # See how all your routes lay out with "rake routes"

@@ -1,0 +1,19 @@
+%h1 List of Quotes
+-if current_user
+  =link_to 'Add a Quote', new_quote_path, :class => "large_link"
+%table
+  %tr
+    %th quote
+    %th source
+    %th
+    %th
+    %th
+  - @quotes.each do |q|
+    %tr
+      %td= q.quote
+      %td= q.source
+      %td= link_to 'Show', q
+      %td= link_to 'Edit', edit_quote_path(q)
+      %td= link_to 'Destroy', q, confirm: 'Are you sure?', method: :delete
+%br/
+= link_to 'New Quote', new_quote_path

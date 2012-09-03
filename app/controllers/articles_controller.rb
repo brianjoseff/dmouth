@@ -8,8 +8,9 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
-
+    @articles = Article.all(:order=> "created_at DESC")
+    @archive_items = Article.all(:order=> "created_at DESC")
+    @title = "Archive"
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @articles }
@@ -21,6 +22,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @rating = Rating.new
+    @title = "Specialties of the Day"
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @article }

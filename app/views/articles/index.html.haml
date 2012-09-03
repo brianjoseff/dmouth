@@ -1,24 +1,26 @@
 /ARCHIVES of old articles
 /viewable by general public, i.e. not admin protected
-
-%h1 Listing articles
-%table
+-if current_user
+  =link_to 'Add an Article', new_article_path, :class => "large_link"
+  
+%h1 Every story we've ever told:
+%table.archive
   %tr
+    %th Date
     %th Title
-    %th Author
-    %th Blurb
-    %th Content
-    %th
-    %th
-    %th
+    %th Chef
   - @articles.each do |article|
-    %tr
+    %tr.a-row
+      %td= l article.created_at, :format => :formal      
       %td= article.title
       %td= article.author
-      %td= article.blurb
-      %td= article.content
-      %td= link_to 'Show', article
-      %td= link_to 'Edit', edit_article_path(article)
-      %td= link_to 'Destroy', article, confirm: 'Are you sure?', method: :delete
+      -if current_user
+        %td= link_to 'Show', article
+        %td= link_to 'Edit', edit_article_path(article)
+        %td= link_to 'Destroy', article, confirm: 'Are you sure?', method: :delete
 %br/
 = link_to 'New Article', new_article_path
+
+
+/ %div.article_list
+/   =render :partial => "/shared/archive_item", :collection => @archive_items 

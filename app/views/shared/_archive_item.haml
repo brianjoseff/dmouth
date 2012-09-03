@@ -1,0 +1,9 @@
+%div.list_item
+  %a= archive_item.title
+  %p= archive_item.blurb
+  /%p= archive_item.content
+  %p.author-date #{l archive_item.created_at, :format => :formal}, By #{archive_item.author}
+
+
+/ (float none, width: 540px, margin:bottom)
+/ (font-size:1.6em, display: inline-block)
