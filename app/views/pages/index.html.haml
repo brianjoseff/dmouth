@@ -7,7 +7,7 @@
       %div.frontpage
         %span.front-container  
           %h2 Specialties of the Day
-      =render @articles
+      =render @articles.reverse
       -if current_user
         =link_to "Add Article", new_article_path
   %div.col2

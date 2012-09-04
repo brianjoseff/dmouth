@@ -32,6 +32,7 @@ gem 'aws-s3'
 gem 'aws-sdk'
 gem 'impressionist'
 gem 'jquery-star-rating-rails'
+gem 'acts-as-taggable-on'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

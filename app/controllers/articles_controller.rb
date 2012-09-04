@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_filter :require_login, :except => [:index, :show]
   
+  
   #impressionist gem logs page views
   impressionist :actions => [:show]
   
@@ -22,6 +23,18 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @rating = Rating.new
+    
+    #limited to first 5
+    @related_articles = @article.find_related_tags.limit(5)
+    
+    @ratings = @article.ratings
+    @quality = quality_avg(@ratings)
+    @interest = interest_avg(@ratings)
+    @readagain = readagain_avg(@ratings)
+    @words = get_words(@ratings)
+    
+    
+    
     @title = "Specialties of the Day"
     respond_to do |format|
       format.html # show.html.erb
@@ -52,7 +65,10 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(params[:article])
-
+    tags_str = params[:article].delete(:tag_list)
+    @article.tag_list = tags_str
+    
+    
     respond_to do |format|
       if @article.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
@@ -92,5 +108,62 @@ class ArticlesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  private
+  def quality_avg(ratings)
+    q_total=0
+    if ratings.count == 0
+      return "no rating yet"
+    else
+      ratings.each do |rating|
+        unless rating.quality.nil?
+          q_total += rating.quality
+        end
+      end
+      return q_total/ratings.count  
+    end  
+    
+  end
   
+  def readagain_avg(ratings)
+    ra_total=0
+    if ratings.count == 0
+      return "no rating yet"
+    else
+      ratings.each do |rating|
+        unless rating.readagain.nil?
+          ra_total += rating.readagain
+        end
+      end
+      return ra_total/ratings.count  
+    end  
+
+  end
+ 
+  def interest_avg(ratings)
+    i_total=0
+    if ratings.count == 0
+      return "no rating yet"
+    else
+      ratings.each do |rating|
+        unless rating.interest.nil?
+          i_total += rating.interest
+        end
+      end
+      return i_total/ratings.count  
+    end
+  end
+  
+  def get_words(ratings)
+    if ratings.count == 0
+      return nil
+    else
+      words = []
+      ratings.each do |rating|
+        unless rating.qualitative.empty?
+          words << rating.qualitative
+        end
+      end
+      return words 
+    end
+  end
 end

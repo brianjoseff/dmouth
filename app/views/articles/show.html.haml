@@ -18,9 +18,9 @@
     = link_to 'Edit', edit_article_path(@article)
     = link_to 'Back', articles_path
   .artcile-col2
-    %h3 Related Articles
+    %h3 Related Articles:
+    =render :partial => "/shared/related_article", :collection => @related_articles 
     /render links to related articles
-    /how will related articles be determined?
   %span.clear
 
 -if current_user
@@ -34,15 +34,15 @@
 /     .
 /     .
 /     
-=form_for(@rating) do |f|
+=form_for([@article,@rating]) do |f|
   / %b= @rating.category.1.name
   %div.star-rating-control
-    =f.label "Quality of Writing"
-    =f.radio_button :quality, "1", :class => "star", :name => "star1"
-    =f.radio_button :quality, "2", :class => "star", :name => "star1"
-    =f.radio_button :quality, "3", :class => "star", :name => "star1"
-    =f.radio_button :quality, "4", :class => "star", :name => "star1"
-    =f.radio_button :quality, "5", :class => "star", :name => "star1"
+    =f.label "Quality of Writing"                  
+    =f.radio_button :quality, "1", :class => "star"
+    =f.radio_button :quality, "2", :class => "star"
+    =f.radio_button :quality, "3", :class => "star"
+    =f.radio_button :quality, "4", :class => "star"
+    =f.radio_button :quality, "5", :class => "star"
   %div.star-rating-control
     =f.label "Likelihood to read another article by author"
     =f.radio_button :readagain, "1", :class => "star"
@@ -62,6 +62,15 @@
     =f.text_field :qualitative
   .actions
     =f.submit "Submit your ratings"
+
+-if current_user
+  %p= "quality: #{number_with_precision(@quality, :precision => 1)}"
+  %p= "read again?: #{number_with_precision(@readagain, :precision => 1)}"
+  %p= "intrerest appeal?: #{number_with_precision(@interest, :precision => 1)}"
+  %p= @words
+
+/ =@readagain
+/ =@interest
   
 
 

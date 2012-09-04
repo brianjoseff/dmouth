@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   skip_before_filter :require_login, :except => [:admin]
   def index
-    @articles = Article.last(5)
+    @articles = Article.order("created_at ASC").last(5)
     
     # return 5 most viewed articles
     @favorites = Article.order("counter_cache DESC").first(5)

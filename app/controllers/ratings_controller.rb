@@ -1,4 +1,5 @@
 class RatingsController < ApplicationController
+  skip_before_filter :require_login
   # GET /ratings
   # GET /ratings.json
   def index
@@ -40,12 +41,13 @@ class RatingsController < ApplicationController
   # POST /ratings
   # POST /ratings.json
   def create
-    @rating = Rating.new(params[:rating])
-
+    
+    @article = Article.find(params[:article_id])
+    @rating = @article.ratings.build(params[:rating])
     respond_to do |format|
       if @rating.save
-        format.html { redirect_to @rating, notice: 'Rating was successfully created.' }
-        format.json { render json: @rating, status: :created, location: @rating }
+        format.html { redirect_to @article, notice: 'Rating was successfully created.' }
+        format.json { render json: @article, status: :created, location: @article }
       else
         format.html { render action: "new" }
         format.json { render json: @rating.errors, status: :unprocessable_entity }
@@ -60,7 +62,7 @@ class RatingsController < ApplicationController
 
     respond_to do |format|
       if @rating.update_attributes(params[:rating])
-        format.html { redirect_to @rating, notice: 'Rating was successfully updated.' }
+        format.html { redirect_to @article, notice: 'Rating was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

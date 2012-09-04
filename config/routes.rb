@@ -1,10 +1,13 @@
 Mouth::Application.routes.draw do
-  resources :ratings
+  
 
   resources :assets
   resources :users
   #resources :admins
-  resources :articles
+  resources :articles do
+    resources :ratings
+  end
+  resources :ratings
   resources :quotes
   resources :sessions, only: [:new, :create, :destroy]
   
