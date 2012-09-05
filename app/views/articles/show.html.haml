@@ -15,8 +15,9 @@
       = simple_format(@article.content)
     %p  
       = @article.author
-    = link_to 'Edit', edit_article_path(@article)
-    = link_to 'Back', articles_path
+    -if current_user  
+      = link_to 'Edit', edit_article_path(@article)
+      = link_to 'Back', articles_path
   .artcile-col2
     %h3 Related Articles:
     =render :partial => "/shared/related_article", :collection => @related_articles 
