@@ -8,7 +8,11 @@
         %span.front-container  
           %h2 Specialties of the Day
       =render @articles.reverse
+      %p#notice= notice
       -if current_user
+        =form_for(@display_number) do |f|
+          =f.text_field :number_of_articles
+          =f.submit "Change number of articles displayed"
         =link_to "Add Article", new_article_path
   %div.col2
     %div.col-cont

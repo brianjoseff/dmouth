@@ -9,7 +9,8 @@ Mouth::Application.routes.draw do
   end
   resources :ratings
   resources :quotes
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, :only => [:new, :create, :destroy]
+  resources :display_numbers
   
   match '/signout', :to => 'sessions#destroy'
   match '/signin', :to => 'sessions#new'
