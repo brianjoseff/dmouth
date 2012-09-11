@@ -39,7 +39,7 @@ class QuotesController < ApplicationController
     
     respond_to do |format|
       if @quote.update_attributes(params[:article])
-        format.html { redirect_to @quote, notice: 'quote was successfully updated.' }
+        format.html { redirect_to quotes_path, notice: 'quote was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
