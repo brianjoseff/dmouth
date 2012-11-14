@@ -1,3 +1,9 @@
+heroku run rake db:setup
+
+for local development, don't run rake db:reset....use rake db:populate which does the same thing except runs our custom database populating functions as well
+
+
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create

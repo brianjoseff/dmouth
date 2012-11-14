@@ -7,7 +7,7 @@
       %div.frontpage
         %span.front-container  
           %h2 Specialties of the Day
-      =render @articles.reverse
+      =render @articles
       %p#notice= notice
       -if current_user
         =form_for(@display_number) do |f|
