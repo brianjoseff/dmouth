@@ -12,7 +12,7 @@
   - @articles.each do |article|
     %tr.a-row
       %td= l article.created_at, :format => :formal      
-      %td= article.title
+      %td=link_to article.title, article_url(article)
       %td= article.author
       -if current_user
         %td= link_to 'Show', article
