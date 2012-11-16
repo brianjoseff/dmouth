@@ -2,6 +2,23 @@ heroku run rake db:setup
 
 for local development, don't run rake db:reset....use rake db:populate which does the same thing except runs our custom database populating functions as well
 
+ We are using heroku to host the application so to update things on the production server:
+ 
+ $ bundle exec rake assets:precompile
+ $git add .
+ $git commit –m “info message here”
+ $git push heroku master
+ 
+ 
+ heroku run rake db:migrate
+ heroku run rak assets:precompile
+ 
+
+
+
+
+
+
 
 
 == Welcome to Rails
