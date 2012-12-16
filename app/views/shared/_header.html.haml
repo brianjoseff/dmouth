@@ -1,3 +1,4 @@
+/styling in application.css
 %header
   -if current_user
     .toolbar
@@ -13,6 +14,10 @@
     =image_tag("dartmouth.png", :alt => "Dartmouth college")
     =image_tag("mouth.png", :alt => "Mouth: To Promote Healthy/Intellectual Conflict")
     =image_tag("open.png", :alt => "Open for Business 24/7")
+    .bar
+      %ul
+        %li= link_to "Subscribe", new_subscriber_path
+        /%li= link_to "Links", new_link_path
     /=link_to image_tag("open.png", :alt => "Open for Business 24/7"), contact_path
   -else
     .masthead

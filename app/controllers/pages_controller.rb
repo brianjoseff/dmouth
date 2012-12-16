@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     @new_display_number = DisplayNumber.find(:last)
     if @new_display_number.nil?
       flash[:error]= "oh lawdy lawd"
-      @articles = Article.order("created_at DESC").last(5)
+      @articles = Article.order("created_at ASC").last(5)
       @favorites = Article.order("counter_cache DESC").first(5)
     else
       @favorites = Article.order("counter_cache DESC").first(@new_display_number.number_of_articles)

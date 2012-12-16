@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120911001155) do
+ActiveRecord::Schema.define(:version => 20121216071152) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -78,6 +78,12 @@ ActiveRecord::Schema.define(:version => 20120911001155) do
   add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], :name => "poly_session_index"
   add_index "impressions", ["user_id"], :name => "index_impressions_on_user_id"
 
+  create_table "occupations", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "quotes", :force => true do |t|
     t.text     "quote"
     t.string   "source"
@@ -93,6 +99,17 @@ ActiveRecord::Schema.define(:version => 20120911001155) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "article_id"
+  end
+
+  create_table "subscribers", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "interest"
+    t.text     "dislikes"
+    t.integer  "occupation_id"
+    t.text     "submission"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "taggings", :force => true do |t|

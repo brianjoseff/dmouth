@@ -1,0 +1,29 @@
+=form_for(@subscriber) do |f|
+  .field
+    =f.label :name
+    %br/
+    =f.text_field :name, :required => true
+  .field
+    =f.label :email
+    %br/
+    =f.text_field :email, :required => true
+  .field
+    =f.label :interest, "What gets you going?"
+    %br/
+    =f.text_area :interest, :size => "40x10"
+  .field
+    =f.label :dislikes, "What offends you?"
+    %br/
+    =f.text_area :dislikes, :size => "40x10"
+  .field
+    =f.label :occupation, "What'd you like to do for Mouth?"
+    %br/
+    -@occupations.each do |o|
+      =f.radio_button :occupation_id, o.id
+      =o.name.humanize
+  .field
+    =f.label :submission, "Upload a written piece for consideration"
+    %br/
+    =f.text_area :submission, :size => "60x20"
+  .action
+    =f.submit "Submit"

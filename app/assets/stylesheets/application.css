@@ -13,6 +13,16 @@
  *= require_tree .
 */
 
+/* I am terrible at css, still don't get the basic structure of it,
+so all stylesheets get the job done, but are very "hacky" and ad hoc.
+There are some SASS files, that sort of follow the object-file relationship.
+i.e. there is styling stuff in 'articles.css.scss' that applies only to articles file sturcture
+styling stuff in this file is either for global styles or front page stylings 
+'scaffolds.css.scss' also has global stylings */ 
+
+
+
+
 body{ 
 	background-color: #f5f1e5;
 	color: #302207;
@@ -25,16 +35,20 @@ html{
 p,a{
 	background-color: #f5f1e5;
 }
-
+.bar ul{
+	height: 20px;
+	list-style-type:none;
+}
 header{
 	border-bottom: 2px solid #4f3f1d;
 	margin-bottom: 10px;
 }
-.toolbar{
+header li{
 	
+}
+.toolbar{	
 	height: 40px;
 	z-index: 5;
-	
 }
 nav{
 

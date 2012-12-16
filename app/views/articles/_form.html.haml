@@ -1,4 +1,5 @@
 /admin protected page
+/form to upload new articles and with option to add images
 = form_for(@article, :action => 'update', :html => { :multipart => true}) do |f|
   - if @article.errors.any?
     #error_explanation
@@ -28,6 +29,11 @@
             =image_tag(asset_fields.object.image.url(:article))
             =asset_fields.label  "delete image"
             =asset_fields.check_box :_destroy
+   
+   
+    /attempts to include dynamic checkbox destroy for images uploaded
+    /not a developed feature
+   
     / -@assets.each do |asset|
     /   =image_tag(asset.image.url(:normal))
     /   =f.check_box :_destroy       
@@ -35,9 +41,9 @@
     /   =image_tag(asset_fields.object.image.url(:normal))
     /   =assets_fields.check_box :_destroy
     / -@assets.each do |asset|
-    /       =f.fields_for "asset[]", asset do |ff|
-    /         =ff.check_box :_destroy
-    /         =image_tag(asset.image.url(:normal))
+    /   =f.fields_for "asset[]", asset do |ff|
+    /     =ff.check_box :_destroy
+    /     =image_tag(asset.image.url(:normal))
     / -unless @assets.first.image_file_name.nil?
     /   -@assets.each do |asset|
     /     =f.fields_for :assets, asset do |fff|
@@ -55,7 +61,7 @@
     %br/
     = f.text_area :content
   .field
-    = f.label "Separate tags with a comma."
+    = f.label :tag_list, "Separate tags with a comma:"
     = f.text_field :tag_list
   .actions
     = f.submit

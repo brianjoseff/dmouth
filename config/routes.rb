@@ -1,6 +1,10 @@
 Mouth::Application.routes.draw do
   
 
+  resources :occupations
+
+  resources :subscribers
+
   resources :assets
   resources :users
   #resources :admins
